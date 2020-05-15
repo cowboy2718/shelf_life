@@ -27,7 +27,7 @@ ui <- fluidPage(
         estimated flavor variability, and the desired risk level for out of code product.  The starting value or intercept is based on the estimated sensory flavor level at week 0."),
       p(""),
       p("The shelf life calculator is based on the follow linear model (a general model is only one type of model that may be applicable)."),
-      p("$$ flavor level = intercept + (staling rate \\times week) + error $$"),
+      p("$$ flavor level = intercept + (decay rate \\times week) + error $$"),
       p("Note: Estimates are based on parameters estimated through sensory testing and regression formulations of key flavor attributes as they 
         behave over time including sensory and product variation (normally distributed error terms are assumed)."),
       p(""),

@@ -30,7 +30,7 @@ ui <- fluidPage(
       p("$$ flavor level = intercept + (decay rate \\times week) + error $$"),
       p("Note: Estimates are based on parameters estimated through sensory testing and regression formulations of key flavor attributes as they 
         behave over time including sensory and product variation (normally distributed error terms are assumed)."),
-      p(""),
+      p("."),
       p("The calculator is only valid within the range of estimated parameters and caution should be used for extrapolation.  
         However, 'playing' with values at extreme values will also show how different parameters affect flavor stability."),
       p(""),

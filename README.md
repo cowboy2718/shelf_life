@@ -34,6 +34,41 @@ The calculator is only valid within the range of estimated parameters and cautio
 
 ***
 
+#### Notes on Loss Functions
+
+Loss functions are defined as formulas in which as one goes away from some target, there is a degradation in quality or performance. Staling is a good example.  As the time from filling increase, flavor quality would generally go down.  Loss functions are generally of the forms shown below.  Note that they are based on a quadratic function ($x^2$) with the idea being that as one moves away from some goal or target, things become much worse much more quickly (there are some other reasons for using a quadratic function as well).
+
+**Higher is Better**
+
+$Loss = k \frac{1}{x^2}$
+
+The value *k* is usually associated with some type of loss (usually monetary).  For example, higher production efficiencies would make the loss function go down.
+
+**Lower is Better**
+
+$Loss = k{x^2}$
+
+An example here might be scrap or rework.  Less scrap or rework implies less loss.
+
+**On Target is Better**
+
+$Loss = k({x-T^2})$
+
+So, if a value *x* is on target *T*, the potential loss would be zero.  So when the target is "0" the function is the same as the lower is better loss function.  This would be most applicable to flavor studies; the sooner a product is bought and consumed, the better is will be.
+
+**Sensory Loss Function**
+
+However, we can use the linear regression models we created above as loss functions as well.  They are simple and are a good start in the discussion of how to set shelf life.  By taking the estimated parameters (intercept, slope and error) wc can develop "what if" situations to test which is what this Shiny app attempts to do.
+
+**Setting a specification**
+
+Shell life is based on the idea of what is the maximum time limit a product could be stored so that a consumer would not notice an appreciable difference of quality.  Note, however, that consumer perception might be different than an "expert" so it is clear to define that limit for the consumer.  There has to be a balance between consumer and producer risk; too long a shelf life becomes consumer risk, too short a shelf life becomes producer risk.
+
+Once a reasonable flavor limit is set, or a bound on flavor degradation, the regression paramters can be used to forecast a shelf life.  However, one must also take into account the variability of the system.  A predicted value will be only a point estimate; one has to also take into account the variability associated with that estimate.  For example, suppose that the ideal shelf life is for some brand or family of brands is determined to be 40 weeks for a staling level no greater than a "3"; that value of 3 might have a range from let's say 2.5, to 3.5.  We want to assure that the worst case scenario is taken into account (usually by lowering the shelf life a few weeks to accomodate this variability).  The smaller the system variability, the more precise the shelf life.  Each batch of product will also be different, so this variaiblity has to be taken into account or accurately assessed.
+
+
+***
+
 #### References
 
 The following are useful resources.

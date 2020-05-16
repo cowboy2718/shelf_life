@@ -3,33 +3,33 @@
 # May 14,2020
 #
 # Calculator uses inputs obtained from parameter estimates of regression formulations based on sensory evaluations of flavor impact
-# over time including estimates of varation in flavor.
+# over time including estimates of varation in product performance.
 #setwd("/Users/tonygojanovic/data/Rprojects/shelf_life/")
 
 ui <- fluidPage(
   # App title ----
   titlePanel("Shelf Life Calculator"),
   
-  # Sidebar with slider inputs for the staling level
+  # Sidebar with slider inputs for degradation level
   sidebarLayout(
     sidebarPanel(
-      sliderInput('stale', 'Desired flavor level', 2, min = 0, max = 10, step = 0.1),
-      numericInput('stale_rate', 'Weekly flavor decay rate',0.052,min=0,max=1,step = 0.001),
+      sliderInput('stale', 'Maximum degradation level (MDL) desired (higher is worse)', 2, min = 0, max = 10, step = 0.1),
+      numericInput('stale_rate', 'Weekly decay rate',0.052,min=0,max=1,step = 0.001),
       numericInput('intercept','Starting level (intercept term at week = 0)',0.696,min=0,max=1,step=0.001), 
-      numericInput('variability', 'Flavor variability (std dev)', 0.192, min = 0, max = 1, step = 0.001),
+      numericInput('variability', 'Product performance variability (std dev)', 0.192, min = 0, max = 1, step = 0.001),
       sliderInput('risk', 'Risk level for % out of compliance (one sided)', 0.02, min = 0.01, max = 0.5, step = 0.01),
       submitButton('Calculate')
     ),
     mainPanel(withMathJax(),
       # Output summary
       h3("Instructions"),
-      p("The estimated shelf life is based on input parameters related to the acceptable level of flavor, estimated weekly flavor decay rate, 
-        estimated flavor and product variability, and the desired risk level for out of code product (percent of product exceeding the target shelf life).  The starting value or intercept is based on the estimated sensory flavor level at week 0."),
+      p("The estimated shelf life is based on input parameters related to the acceptable level of product performance (maximum degradation level or MDL, in which higher is worse), estimated weekly decay rate, 
+        estimated product variability, and the desired risk level for out of code product (percent of product exceeding the target shelf life).  The starting value or intercept is based on the estimated product performance levels at week 0."),
       p(""),
       p("The shelf life calculator is based on the follow linear model (a linear model is only one type of model that may be applicable)."),
-      p("$$ flavor level = intercept + (decay rate \\times week) + error $$"),
-      p("Note: Estimates are based on parameters estimated through sensory testing and regression formulations of key flavor attributes as they 
-        behave over time including sensory and product variation (normally distributed error terms are assumed)."),
+      p("$$MDL = intercept + (decay rate)(week) + error$$ "),
+      p("Note: Estimates are based on parameters estimated on regression formulations of key product attributes as they 
+        behave over time including product performance variation (normally distributed error terms are assumed)."),
       p(""),
       p("The calculator is only valid within the range of estimated parameters and caution should be used for extrapolation.  
         However, 'playing' with values at extreme values will also show how different parameters affect flavor stability."),

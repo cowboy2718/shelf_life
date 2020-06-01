@@ -34,11 +34,13 @@ ui <- fluidPage(
       p("The calculator is only valid within the range of estimated parameters and caution should be used for extrapolation.  
         However, 'playing' with values at extreme values will also show how different parameters affect flavor stability."),
       p(""),
-      h3("Your mean estimated shelf life (in weeks) is:"),
+      h4("Your mean estimated shelf life (in weeks) is:"),
       verbatimTextOutput("weeks", placeholder = TRUE),
-      h3("Best case shelf life (given the proportion of product that could be out of code:"),
+      h4("Best case shelf life (given the proportion of product that could be out of code:"),
       verbatimTextOutput("risk"),
-      verbatimTextOutput("upper", placeholder = TRUE)
+      verbatimTextOutput("upper", placeholder = TRUE),
+      tags$a(href="https://www.youtube.com/watch?v=bVCCu7V1R3U&t=297s", "YouTube Video on shelf life")
+      
       
     )
   )
